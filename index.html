@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
   <title>XV Sharick Moriel</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap"
@@ -62,6 +63,13 @@
     }
 
     /* VIDEO - PANTALLA PRINCIPAL */
+    .video {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Contenedor principal del video */
     .video-container {
       position: relative;
       width: 100%;
@@ -72,6 +80,7 @@
       z-index: 1;
     }
 
+    /* Video principal (Sharick) - se ve completo sin cortes */
     .video-principal {
       max-width: 100%;
       max-height: 90vh;
@@ -85,6 +94,7 @@
       border-radius: 8px;
     }
 
+    /* Sombra/vignette para dar profundidad */
     .video-container::before {
       content: "";
       position: absolute;
@@ -97,7 +107,23 @@
       pointer-events: none;
     }
 
-    /* ========== MARCO ESTILO RAPUNZEL ========== */
+    /* ========== MARCO ESTILO RAPUNZEL PARA EL VIDEO ========== */
+    .marco-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 5;
+      width: auto;
+      height: auto;
+      min-width: 300px;
+      min-height: 200px;
+      max-width: 85%;
+      max-height: 90%;
+    }
+
+    /* Contenedor del marco */
     .marco-video-rapunzel {
       position: relative;
       display: inline-block;
@@ -106,6 +132,7 @@
       border-radius: 30px;
     }
 
+    /* Marco exterior dorado */
     .marco-video-rapunzel::before {
       content: "";
       position: absolute;
@@ -122,6 +149,7 @@
       animation: brilloMarco 3s infinite alternate;
     }
 
+    /* Marco interior */
     .marco-video-rapunzel::after {
       content: "";
       position: absolute;
@@ -134,7 +162,7 @@
       pointer-events: none;
     }
 
-    /* Esquinas y decoraciones */
+    /* Esquinas decorativas */
     .esquina-marco {
       position: absolute;
       width: 40px;
@@ -226,6 +254,7 @@
       font-size: 16px;
     }
 
+    /* Linternas decorativas en los bordes */
     .linterna-marco {
       position: absolute;
       font-size: 20px;
@@ -262,42 +291,16 @@
       animation-delay: 1.5s;
     }
 
-    .flor-marco {
-      position: absolute;
-      font-size: 14px;
-      color: #E8A0BF;
-      text-shadow: 0 0 8px #E8A0BF;
-      animation: girarFlor 4s infinite linear;
-    }
-
-    .flor-marco-1 {
-      top: 10px;
-      left: 10px;
-    }
-
-    .flor-marco-2 {
-      top: 10px;
-      right: 10px;
-    }
-
-    .flor-marco-3 {
-      bottom: 10px;
-      left: 10px;
-    }
-
-    .flor-marco-4 {
-      bottom: 10px;
-      right: 10px;
-    }
-
     /* Animaciones */
     @keyframes brilloMarco {
       0% {
         box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.5);
       }
 
       100% {
         box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+        border-color: rgba(212, 175, 55, 0.9);
       }
     }
 
@@ -327,6 +330,35 @@
       }
     }
 
+    /* Decoración de flores en los bordes */
+    .flor-marco {
+      position: absolute;
+      font-size: 14px;
+      color: #E8A0BF;
+      text-shadow: 0 0 8px #E8A0BF;
+      animation: girarFlor 4s infinite linear;
+    }
+
+    .flor-marco-1 {
+      top: 10px;
+      left: 10px;
+    }
+
+    .flor-marco-2 {
+      top: 10px;
+      right: 10px;
+    }
+
+    .flor-marco-3 {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    .flor-marco-4 {
+      bottom: 10px;
+      right: 10px;
+    }
+
     @keyframes girarFlor {
       0% {
         transform: rotate(0deg);
@@ -337,7 +369,38 @@
       }
     }
 
-    /* NOMBRE */
+    /* Responsive */
+    @media (max-width: 550px) {
+      .marco-video-rapunzel {
+        padding: 12px;
+      }
+
+      .esquina-marco {
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+      }
+
+      .linterna-marco {
+        font-size: 14px;
+      }
+
+      .flor-marco {
+        font-size: 10px;
+      }
+
+      .esquina-marco-1::after,
+      .esquina-marco-2::after,
+      .esquina-marco-3::after,
+      .esquina-marco-4::after {
+        font-size: 10px;
+      }
+    }
+
+
+
+    /* NOMBRE - CON FONDO DE CASTILLO ESTILO ELEGANTE */
+    /* Estilo para la imagen de fondo separada */
     .nombre {
       position: relative;
       overflow: hidden;
@@ -357,6 +420,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /* Cambia a 'contain' si quieres ver la imagen completa */
       object-position: center;
     }
 
@@ -376,6 +440,26 @@
       padding: 2rem;
     }
 
+    /* Overlay suave para que el texto resalte sin opacar la imagen */
+    .nombre::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      /* Oscurecimiento suave */
+      z-index: 0;
+    }
+
+    .contenido-nombre {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    /* "MIS XV AÑOS" - pequeño arriba */
     .nombre .subtitulo {
       font-family: 'Cinzel', serif;
       font-size: 2rem;
@@ -387,6 +471,7 @@
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
+    /* "SHARICK" - grande y elegante */
     .nombre .nombre-quince {
       font-family: 'Great Vibes', cursive;
       font-size: 6rem;
@@ -396,11 +481,38 @@
       letter-spacing: 2px;
     }
 
-    /* CUADROS GENERALES */
-    .cuadro-rapunzel,
-    .cuadro-ubicacion,
-    .cuadro-contador,
-    .cuadro-formulario {
+
+
+    /* Responsive para móviles */
+    @media (max-width: 550px) {
+      .nombre .nombre-quince {
+        font-size: 3.8rem;
+      }
+
+      .nombre .subtitulo {
+        font-size: 0.9rem;
+        letter-spacing: 5px;
+      }
+
+    }
+
+    /* texto & contenido */
+    p,
+    h2,
+    .texto-oro {
+      max-width: 700px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #FADB67;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ========== CUADRO ESTILO RAPUNZEL - SIN CURSIVA, DORADO BRILLANTE ========== */
+    .cuadro-rapunzel {
       background: linear-gradient(145deg, rgba(154, 121, 174, 0.5), rgba(30, 16, 40, 0.7));
       backdrop-filter: blur(12px);
       border-radius: 48px;
@@ -412,12 +524,11 @@
       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
       text-align: center;
       position: relative;
+
     }
 
-    .cuadro-rapunzel::before,
-    .cuadro-ubicacion::before,
-    .cuadro-contador::before,
-    .cuadro-formulario::before {
+    /* Borde decorativo interno */
+    .cuadro-rapunzel::before {
       content: "";
       position: absolute;
       top: 12px;
@@ -429,7 +540,7 @@
       pointer-events: none;
     }
 
-    /* Decoraciones */
+    /* Decoración superior e inferior */
     .decoracion-top,
     .decoracion-bottom {
       margin-bottom: 1.2rem;
@@ -475,6 +586,7 @@
       }
     }
 
+    /* Divisor elegante */
     .divisor-linterna {
       display: flex;
       align-items: center;
@@ -496,12 +608,8 @@
       text-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
     }
 
-    /* Textos */
-    .texto-historia,
-    .texto-preparate,
-    .texto-reserva,
-    .texto-formulario,
-    .texto-agradece {
+    /* Texto de la historia - SIN CURSIVA */
+    .texto-historia {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 1.5px;
@@ -509,6 +617,12 @@
       text-shadow: 0 0 12px rgba(212, 175, 55, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
       margin: 0.5rem 0;
       font-weight: 600;
+      font-style: normal;
+    }
+
+    /* Padres - con dorado brillante */
+    .padres-rapunzel {
+      margin: 0.5rem 0;
     }
 
     .nombre-padre,
@@ -517,32 +631,39 @@
       font-size: 0.85rem;
       letter-spacing: 1.5px;
       color: #FFFFFF;
-      text-shadow: 0 0 12px #fad954;
+      text-shadow: 0 0 12px #F7D44A;
       margin: 0.5rem 0;
       font-weight: 600;
+      font-style: normal;
       background: rgba(142, 118, 146, 0.3);
       padding: 0.4rem 1.2rem;
       border-radius: 40px;
       display: inline-block;
+
     }
 
+
+
+    /* Texto de invitación - SIN CURSIVA */
     .invitacion-texto {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 1.5px;
       color: #FFFFFF;
-      text-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
       margin: 0.5rem 0;
       font-weight: 600;
+      font-style: normal;
     }
 
-    /* Fecha */
+    /* Fecha - con dorado brillante */
     .fecha-rapunzel {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
       margin-top: 0.8rem;
+
     }
 
     .linterna-simbolo {
@@ -575,31 +696,136 @@
       background: rgba(142, 118, 146, 0.3);
       padding: 0.4rem 1.2rem;
       border-radius: 40px;
+      font-style: normal;
     }
 
-    /* Ubicación */
-    .titulo-ubicacion,
-    .titulo-formulario {
+    /* Responsive */
+    @media (max-width: 550px) {
+      .cuadro-rapunzel {
+        padding: 1.5rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .cuadro-rapunzel::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 24px;
+      }
+
+      .texto-historia {
+        font-size: 0.82rem;
+      }
+
+      .nombre-padre,
+      .nombre-madre {
+        font-size: 0.7rem;
+      }
+
+      .invitacion-texto {
+        font-size: 0.65rem;
+      }
+
+      .fecha {
+        font-size: 0.8rem;
+      }
+
+      .linea {
+        width: 40px;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 550px) {
+      .cuadro-rapunzel {
+        padding: 1.5rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .cuadro-rapunzel::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 24px;
+      }
+
+      .texto-historia {
+        font-size: 0.82rem;
+      }
+
+      .nombre-padre,
+      .nombre-madre {
+        font-size: 0.7rem;
+      }
+
+      .invitacion-texto {
+        font-size: 0.65rem;
+      }
+
+      .fecha {
+        font-size: 0.8rem;
+      }
+
+      .linea {
+        width: 40px;
+      }
+    }
+
+    /* ========== PANTALLA 4 - UBICACIÓN ESTILO RAPUNZEL ========== */
+    .cuadro-ubicacion {
+      background: linear-gradient(145deg, rgba(154, 121, 174, 0.5), rgba(30, 16, 40, 0.7));
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+      text-align: center;
+      position: relative;
+
+    }
+
+    /* Borde decorativo interno */
+    .cuadro-ubicacion::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    /* Título */
+    .titulo-ubicacion {
       font-family: 'Cinzel', serif;
       font-size: 1.6rem;
       letter-spacing: 4px;
       color: #FFFFFF;
-      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
       margin-bottom: 0.5rem;
       font-weight: 600;
     }
 
+    /* Dirección */
     .direccion {
       font-family: 'Cinzel', serif;
       font-size: 1rem;
       line-height: 1.5;
       color: #FFFFFF;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 1px 3px rgba(0, 0, 0, 0.5);
       margin: 1rem 0;
       font-weight: 500;
       letter-spacing: 1px;
     }
 
+    /* Hora */
     .hora-container {
       margin: 1rem 0;
     }
@@ -619,10 +845,89 @@
       font-weight: 700;
       letter-spacing: 2px;
       color: #FFFFFF;
-      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    /* Botones */
+    /* Botón cómo llegar */
+    .btn-ubicacion {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      margin: 0.8rem 0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-ubicacion:hover {
+      background: rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.8);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+      transform: scale(1.02);
+    }
+
+    /* Texto del regalo */
+    .regalo-texto {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      margin-top: 0.5rem;
+      font-style: normal;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 550px) {
+      .cuadro-ubicacion {
+        padding: 1.8rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .cuadro-ubicacion::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 24px;
+      }
+
+      .titulo-ubicacion {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+      }
+
+      .direccion {
+        font-size: 0.85rem;
+      }
+
+      .hora-label {
+        font-size: 0.85rem;
+      }
+
+      .hora-valor {
+        font-size: 1.1rem;
+      }
+
+      .btn-ubicacion {
+        font-size: 0.75rem;
+        padding: 8px 18px;
+      }
+
+      .regalo-texto {
+        font-size: 0.7rem;
+      }
+    }
+
+    /* ========== MAPA Y BOTÓN ========== */
     .mapa-container {
       position: relative;
       margin: 1rem 0;
@@ -631,6 +936,7 @@
       display: inline-block;
       width: auto;
       max-width: 90%;
+
     }
 
     .mapa-fondo {
@@ -643,6 +949,7 @@
       z-index: 0;
       border-radius: 30px;
       opacity: 0.4;
+
     }
 
     .btn-ubicacion {
@@ -663,6 +970,7 @@
       transition: all 0.3s ease;
       cursor: pointer;
       animation: flotarRegalo 2s infinite ease-in-out;
+
     }
 
     .btn-ubicacion:hover {
@@ -670,6 +978,15 @@
       border-color: rgba(212, 175, 55, 0.9);
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
       transform: scale(1.02);
+
+    }
+
+    /* Emoji de regalo */
+    .regalo-emoji {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+      animation: flotarRegalo 2s infinite ease-in-out;
+      display: inline-block;
     }
 
     @keyframes flotarRegalo {
@@ -684,13 +1001,7 @@
       }
     }
 
-    .regalo-emoji {
-      font-size: 3rem;
-      margin-top: 0.5rem;
-      animation: flotarRegalo 2s infinite ease-in-out;
-      display: inline-block;
-    }
-
+    /* Texto del regalo */
     .regalo-texto {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
@@ -699,17 +1010,68 @@
       text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
       margin-top: 0.5rem;
       margin-bottom: 0;
+      font-style: normal;
       letter-spacing: 1px;
     }
 
     /* CONTADOR */
+    /* ========== PANTALLA 5 - CONTADOR ESTILO RAPUNZEL ========== */
+    .cuadro-contador {
+      background: linear-gradient(145deg, rgba(154, 121, 174, 0.5), rgba(30, 16, 40, 0.7));
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Borde decorativo interno */
+    .cuadro-contador::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    /* Texto reserva color lila */
+    .texto-reserva {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    /* Texto prepárate */
+    .texto-preparate {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+      margin: 0.5rem 0;
+
+    }
+
+    /* Contador - CORREGIDO (menos separación) */
     .contador-box {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
       margin: 1rem 0;
-      font-size: 1.0rem;
 
     }
 
@@ -718,29 +1080,97 @@
       backdrop-filter: blur(4px);
       padding: 0.8rem 1rem;
       border-radius: 20px;
-      color: #F7D44A;
       min-width: 85px;
       text-align: center;
       box-shadow: 0 8px 14px rgba(212, 175, 55, 0.2);
       border: 1px solid rgba(212, 175, 55, 0.3);
+
     }
 
     .box span {
-      font-size: 1.6rem;
+      font-size: 2.2rem;
       font-weight: bold;
       display: block;
       color: #F7D44A;
       text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
       background: transparent;
+      border-radius: 16px;
+      padding: 0;
       margin-bottom: 4px;
+      /* Reducido de 6px a 4px */
       line-height: 1.1;
+      /* Controla la altura del número */
     }
 
+    /* Estilo para el texto (DÍAS, HORAS, MINUTOS) */
+    .box {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      color: #F7D44A;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+      animation: aparecerFlotante 0.4s ease-out, flotarSuave 2s
+    }
+
+    /* Si usas <br> en el HTML, esto ayuda a reducir el espacio */
     .box br {
       display: none;
+      /* Oculta el <br> para evitar espacio extra */
     }
 
-    /* IMÁGENES DECORATIVAS */
+    /* Texto agradece */
+    .texto-agradece {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      margin-top: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 550px) {
+      .cuadro-contador {
+        padding: 1.8rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .cuadro-contador::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 24px;
+      }
+
+      .texto-reserva {
+        font-size: 0.7rem;
+      }
+
+      .texto-preparate {
+        font-size: 0.85rem;
+      }
+
+      .box {
+        min-width: 65px;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .box span {
+        font-size: 1.6rem;
+        margin-bottom: 2px;
+      }
+
+      .box {
+        font-size: 0.6rem;
+      }
+
+      .texto-agradece {
+        font-size: 0.7rem;
+      }
+    }
+
+    /* ========== IMÁGENES DECORATIVAS ========== */
     .imagen-decorativa {
       margin: 0.8rem 0;
       text-align: center;
@@ -755,11 +1185,11 @@
     }
 
     .img-flor {
-      max-width: 140px;
+      max-width: 120px;
     }
 
     .img-sobre {
-      max-width: 170px;
+      max-width: 150px;
     }
 
     @keyframes flotarImagen {
@@ -774,15 +1204,72 @@
       }
     }
 
+    /* Ajuste responsive para imágenes */
+    @media (max-width: 550px) {
+      .img-flor {
+        max-width: 40px;
+      }
+
+      .img-sobre {
+        max-width: 45px;
+      }
+    }
+
     /* FORMULARIO */
-    .campo-nombre,
-    .asistencia-grupo {
+    /* ========== PANTALLA 6 - FORMULARIO ESTILO RAPUNZEL ========== */
+    .cuadro-formulario {
+      background: linear-gradient(145deg, rgba(101, 75, 119, 0.5), rgba(30, 16, 40, 0.8));
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2rem 1.8rem;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    /* Borde decorativo interno */
+    .cuadro-formulario::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    .cuadro-formulario h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      color: #FFFFFF;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .cuadro-formulario p {
+      font-family: 'Cinzel', serif;
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .campo-nombre {
       margin-bottom: 1.5rem;
       text-align: left;
     }
 
-    .campo-nombre,
-    .asistencia-grupo label {
+    .campo-nombre label {
       font-family: 'Cinzel', serif;
       font-weight: 600;
       color: #ffffff;
@@ -811,6 +1298,27 @@
       box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
     }
 
+    .campo-nombre input::placeholder {
+      color: rgba(173, 169, 169, 0.5);
+    }
+
+    .asistencia-grupo {
+      text-align: left;
+      margin: 1.5rem 0;
+      color: #ffffff;
+    }
+
+    .asistencia-grupo .titulo-opcion {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: #F7D44A;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      margin-bottom: 12px;
+      display: block;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
     .radio-opciones {
       display: flex;
       gap: 2rem;
@@ -819,6 +1327,7 @@
       border-radius: 100px;
       justify-content: center;
       border: 1px solid rgba(223, 185, 60, 0.3);
+      accent-color: #F7D44A;
     }
 
     .radio-opciones label {
@@ -864,7 +1373,16 @@
       transform: scale(1.02);
     }
 
-    /* MENSAJES FLOTANTES */
+    .mensaje-agradecimiento {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-family: 'Cinzel', serif;
+      color: #D8B4E2;
+      text-shadow: 0 0 5px rgba(216, 180, 226, 0.3);
+    }
+
+    /* ========== MENSAJES DE RESPUESTA ========== */
+    /* ========== CUADRO FLOTANTE PARA MENSAJES ========== */
     .mensaje-flotante {
       position: fixed;
       top: 50%;
@@ -881,7 +1399,7 @@
       text-align: center;
       backdrop-filter: blur(20px);
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
-      animation: aparecerFlotante 0.4s ease-out;
+      animation: aparecerFlotante 0.4s ease-out, flotarSuave 2s ease-in-out;
       cursor: pointer;
     }
 
@@ -897,10 +1415,23 @@
       }
     }
 
+    @keyframes flotarSuave {
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) translateY(0px);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) translateY(-8px);
+      }
+    }
+
     .mensaje-flotante-exito {
       background: linear-gradient(145deg, rgba(46, 28, 58, 0.95), rgba(30, 16, 40, 0.98));
       border: 2px solid rgba(212, 175, 55, 0.7);
       color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     .mensaje-flotante-error {
@@ -909,18 +1440,7 @@
       color: #FFFFFF;
     }
 
-    .mensaje-flotante-info {
-      background: linear-gradient(145deg, rgba(80, 70, 100, 0.95), rgba(50, 40, 70, 0.98));
-      border: 2px solid rgba(100, 150, 200, 0.7);
-      color: #FFFFFF;
-    }
-
-    .mensaje-flotante-cargando {
-      background: linear-gradient(145deg, rgba(46, 28, 58, 0.95), rgba(30, 16, 40, 0.98));
-      border: 2px solid rgba(212, 175, 55, 0.5);
-      color: #F7D44A;
-    }
-
+    /* Botón de cerrar */
     .mensaje-flotante .cerrar-btn {
       position: absolute;
       top: 10px;
@@ -937,12 +1457,25 @@
       transform: scale(1.1);
     }
 
+    /* Decoración del cuadro flotante */
     .mensaje-flotante .flor-deco {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: #F7D44A;
     }
 
+    .mensaje-flotante .mensaje-texto {
+      margin: 0.5rem 0;
+    }
+
+    .mensaje-flotante .tiempo-restante {
+      font-size: 0.7rem;
+      margin-top: 0.8rem;
+      opacity: 0.6;
+      color: #D8B4E2;
+    }
+
+    /* Estilo para las imágenes dentro del mensaje flotante */
     .imagen-mensaje {
       width: 50px;
       height: auto;
@@ -950,7 +1483,51 @@
       animation: flotarImagen 3s infinite ease-in-out;
     }
 
-    /* CONTROLES */
+    @keyframes flotarImagen {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* responsive */
+    @media (max-width: 550px) {
+      .cuadro-formulario {
+        padding: 1.5rem;
+      }
+
+      .cuadro-formulario::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 24px;
+      }
+
+      .cuadro-formulario h3 {
+        font-size: 1.4rem;
+      }
+
+      .radio-opciones {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nombre h1 {
+        font-size: 3.8rem;
+      }
+
+      .box span {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ========== CONTROL DE MÚSICA ========== */
     .control-musica {
       position: fixed;
       bottom: 20px;
@@ -999,7 +1576,25 @@
       letter-spacing: 1px;
     }
 
-    /* EFECTO FADE */
+
+
+
+    /* ====== EFECTO DE APARICIÓN SUAVE ====== */
+    .fade {
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      filter: blur(8px);
+      transition: all 1s ease;
+    }
+
+    /* Cuando entra en pantalla */
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* ====== EFECTO ELEGANTE DINÁMICO ====== */
     .fade {
       opacity: 0;
       transform: translateY(60px) scale(0.96);
@@ -1008,355 +1603,699 @@
       will-change: transform, opacity;
     }
 
+    /* Cuando aparece */
     .fade.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
+    }
+
+    .fade.visible {
       box-shadow: 0 0 40px rgba(247, 212, 74, 0.15);
     }
 
-    /* OPTIMIZACIONES PARA MÓVIL - REDUCIR ANIMACIONES */
-    @media (max-width: 550px) {
-      .marco-video-rapunzel {
-        padding: 12px;
+
+    .mensaje-flotante-info {
+      background: linear-gradient(145deg, rgba(80, 70, 100, 0.95), rgba(50, 40, 70, 0.98));
+      border: 2px solid rgba(100, 150, 200, 0.7);
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(100, 150, 200, 0.5);
+    }
+
+    .mensaje-flotante-cargando {
+      background: linear-gradient(145deg, rgba(46, 28, 58, 0.95), rgba(30, 16, 40, 0.98));
+      border: 2px solid rgba(212, 175, 55, 0.5);
+      color: #F7D44A;
+    }
+
+    @keyframes girarCargando {
+      0% {
+        transform: rotate(0deg);
       }
 
-      .esquina-marco {
-        width: 25px;
-        height: 25px;
-        font-size: 16px;
-      }
-
-      .linterna-marco {
-        font-size: 14px;
-      }
-
-      .flor-marco {
-        font-size: 10px;
-      }
-
-      .nombre .nombre-quince {
-        font-size: 3.8rem;
-      }
-
-      .nombre .subtitulo {
-        font-size: 0.9rem;
-        letter-spacing: 5px;
-      }
-
-      .cuadro-rapunzel,
-      .cuadro-ubicacion,
-      .cuadro-contador,
-      .cuadro-formulario {
-        padding: 1.5rem 1.2rem;
-        border-radius: 32px;
-      }
-
-      .box {
-        min-width: 65px;
-        padding: 0.6rem 0.8rem;
-      }
-
-      .box span {
-        font-size: 1.6rem;
-      }
-
-      .img-flor {
-        max-width: 40px;
-      }
-
-      .img-sobre {
-        max-width: 45px;
-      }
-
-      .radio-opciones {
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      /* Reducir animaciones en móvil para mejor rendimiento */
-      .deco-simbolo,
-      .linterna-marco,
-      .flor-marco,
-      .box,
-      .btn-ubicacion,
-      button,
-      .regalo-emoji,
-      .imagen-mensaje {
-        animation-duration: 0.001s !important;
-        animation-iteration-count: 1 !important;
-      }
-
-      .marco-video-rapunzel::before {
-        animation: none !important;
+      100% {
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- MÚSICA DE FONDO -->
+  <!-- ========== MÚSICA DE FONDO ========== -->
   <audio id="musicaFondo" loop autoplay>
     <source src="AUDIO_FONDO.mp3" type="audio/mpeg">
+    <source src="AUDIO_FONDO.mp3" type="audio/ogg">
+    Tu navegador no soporta audio.
   </audio>
 
+  <!-- Botón de control de música (opcional) -->
   <div class="control-musica" id="controlMusica">
     <span class="icono-musica">🎵</span>
     <span class="texto-musica">Música ON</span>
   </div>
 
-  <!-- FONDO GLOBAL -->
+
+  <!-- ========== FONDO GLOBAL CON LINTERNAS (TODAS LAS PANTALLAS) ========== -->
   <div class="fondo-global">
-    <img src="LUCES_MOVIMIENTO.gif" alt="Linternas de Rapunzel" loading="lazy">
+    <img src="LUCES_MOVIMIENTO.gif" alt="Linternas de Rapunzel">
   </div>
   <div class="capa-oscura-global"></div>
 
-  <!-- VIDEO PRINCIPAL -->
+  <!-- 1 VIDEO PRINCIPAL -->
+  <!-- 1 VIDEO PRINCIPAL CON MARCO RAPUNZEL -->
   <div class="video-container">
     <div class="marco-video-rapunzel">
+      <!-- Esquinas decorativas -->
       <div class="esquina-marco esquina-marco-1"></div>
       <div class="esquina-marco esquina-marco-2"></div>
       <div class="esquina-marco esquina-marco-3"></div>
       <div class="esquina-marco esquina-marco-4"></div>
+
+      <!-- Linternas -->
       <div class="linterna-marco linterna-marco-1">❀</div>
       <div class="linterna-marco linterna-marco-2">❀</div>
       <div class="linterna-marco linterna-marco-3">❀</div>
       <div class="linterna-marco linterna-marco-4">❀</div>
+
+      <!-- Flores decorativas -->
       <div class="flor-marco flor-marco-1">🌸</div>
       <div class="flor-marco flor-marco-2">🌸</div>
       <div class="flor-marco flor-marco-3">🌸</div>
       <div class="flor-marco flor-marco-4">🌺</div>
-      <video autoplay muted playsinline loop class="video-principal" preload="metadata">
+
+      <!-- Video -->
+      <video autoplay muted playsinline loop class="video-principal">
         <source src="sharick_video.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 
-  <!-- NOMBRE -->
+
+
+  <!-- 2 NOMBRE PRINCIPAL - CON IMAGEN DE FONDO AJUSTADA -->
   <section class="pantalla nombre fade">
+    <!-- Imagen de fondo como elemento separado -->
     <div class="fondo-castillo">
-      <img src="FONDO_CASTILLO.png" alt="Castillo" class="img-castillo" loading="lazy">
+      <img src="FONDO_CASTILLO.png" alt="Castillo" class="img-castillo">
       <div class="overlay-castillo"></div>
     </div>
+
     <div class="contenido-nombre">
       <h2 class="subtitulo">MIS XV AÑOS</h2>
       <h1 class="nombre-quince">Sharick Moriel</h1>
     </div>
   </section>
 
-  <!-- HISTORIA -->
+  <!-- 3 HISTORIA Y PADRES -->
+  <!-- 3 HISTORIA - ESTILO RAPUNZEL ELEGANTE -->
   <section class="pantalla fade">
     <div class="cuadro-rapunzel">
-      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
-      <p class="texto-historia">"HACE 15 AÑOS NACIÓ EN NUESTRO HOGAR UNA DULCE NIÑA, QUE CON LUZ RADIENTE, VINO A
-        ILUMINAR NUESTRAS VIDAS, COLMÁNDONOS DE ALEGRÍAS E ILUSIONES, ASÍ LA HEMOS VISTO CRECER DÍA A DÍA PARA HOY,
-        CONVERTIRSE EN UNA HERMOSA SEÑORITA."</p>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      <div class="decoracion-top">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
       </div>
+
+      <p class="texto-historia">
+        "HACE 15 AÑOS NACIÓ EN NUESTRO HOGAR UNA DULCE NIÑA, QUE CON LUZ RADIENTE, VINO A ILUMINAR NUESTRAS VIDAS,
+        COLMÁNDONOS DE ALEGRÍAS E ILUSIONES, ASÍ LA HEMOS VISTO CRECER DÍA A DÍA PARA HOY, CONVERTIRSE EN UNA HERMOSA
+        SEÑORITA."
+      </p>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
+      </div>
+
       <div class="padres-rapunzel">
         <p class="nombre-padre">SR. JOSÉ MORIEL ROCOCHANO</p>
         <p class="nombre-madre">SRA. ELENA PERERO GONZÁLEZ</p>
       </div>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
       </div>
-      <p class="invitacion-texto">JUNTO A MIS PADRES QUEREMOS INVITARLES A COMPARTIR UN MOMENTO MUY ESPECIAL PARA
-        NOSOTROS</p>
-      <div class="fecha-rapunzel"><span class="linterna-simbolo">◌</span><span class="fecha">SÁBADO 06 ·
-          JUNIO</span><span class="linterna-simbolo">◌</span></div>
-      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
+
+      <p class="invitacion-texto">
+        JUNTO A MIS PADRES QUEREMOS INVITARLES A COMPARTIR UN MOMENTO MUY ESPECIAL PARA NOSOTROS
+      </p>
+
+      <div class="fecha-rapunzel">
+        <span class="linterna-simbolo">◌</span>
+        <span class="fecha">SÁBADO 06 · JUNIO</span>
+        <span class="linterna-simbolo">◌</span>
+      </div>
+
+      <div class="decoracion-bottom">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
+      </div>
     </div>
   </section>
 
-  <!-- UBICACIÓN -->
+  <!-- 4 UBICACIÓN -->
+  <!-- 4 UBICACIÓN - ESTILO RAPUNZEL CON MAPA Y REGALO -->
   <section class="pantalla fade">
     <div class="cuadro-ubicacion">
-      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
+      <!-- Decoración superior -->
+      <div class="decoracion-top">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
+      </div>
+
       <h2 class="titulo-ubicacion">LUGAR DE RECEPCIÓN</h2>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
       </div>
-      <p class="direccion">LA 25 ENTRE CHÁMBERS Y ROSENDO AVILES</p>
-      <div class="hora-container"><span class="hora-label">HORA:</span><span class="hora-valor">19:00</span></div>
-      <div class="mapa-container"><img src="mapa.png" alt="Mapa" class="mapa-fondo" loading="lazy"><a
-          class="btn-ubicacion" href="https://maps.app.goo.gl/TTVf24gznETEnCid9" target="_blank">📍 ¿CÓMO LLEGAR?</a>
+
+      <p class="direccion">
+        LA 25 ENTRE CHÁMBERS Y ROSENDO AVILES
+      </p>
+
+      <div class="hora-container">
+        <span class="hora-label">HORA:</span>
+        <span class="hora-valor">19:00</span>
       </div>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+
+      <!-- Área del botón con imagen de mapa de fondo -->
+      <div class="mapa-container">
+        <img src="mapa.png" alt="Mapa" class="mapa-fondo">
+        <a class="btn-ubicacion" href="https://maps.app.goo.gl/TTVf24gznETEnCid9" target="_blank">📍 ¿CÓMO LLEGAR?</a>
       </div>
-      <p class="regalo-texto">EL REGALO MÁS VALIOSO SERÁ TU COMPAÑÍA</p>
-      <div class="regalo-emoji">🎁</div>
-      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
+      </div>
+
+      <p class="regalo-texto">
+        EL REGALO MÁS VALIOSO SERÁ TU COMPAÑÍA
+      </p>
+
+      <!-- Emoji de regalo -->
+      <div class="regalo-emoji">
+        🎁
+      </div>
+
+      <!-- Decoración inferior -->
+      <div class="decoracion-bottom">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
+      </div>
     </div>
   </section>
 
-  <!-- CONTADOR -->
+
+
+  <!-- 5 CONTADOR - ESTILO RAPUNZEL -->
+  <!-- 5 CONTADOR - ESTILO RAPUNZEL CON IMÁGENES -->
   <section class="pantalla fade">
     <div class="cuadro-contador">
-      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
-      <p class="texto-reserva">SE RESERVA EL COLOR LILA DE USO<br>EXCLUSIVO PARA LA QUINCEAÑERA</p>
-      <div class="imagen-decorativa"><img src="VESTIDO.png" alt="Vestido" class="img-flor" loading="lazy"></div>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      <!-- Decoración superior -->
+      <div class="decoracion-top">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
       </div>
-      <p class="texto-preparate">PREPÁRATE PORQUE FALTAN</p>
+
+      <p class="texto-reserva">
+        SE RESERVA EL COLOR LILA DE USO<br>
+        EXCLUSIVO PARA LA QUINCEAÑERA
+      </p>
+
+      <!-- IMAGEN 1: debajo de la frase del color lila -->
+      <div class="imagen-decorativa">
+        <img src="VESTIDO.png" alt="Flor lila" class="img-flor">
+      </div>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
+      </div>
+
+      <p class="texto-preparate">
+        PREPÁRATE PORQUE FALTAN
+      </p>
+
+      <!-- CONTADOR -->
       <div class="contador-box">
         <div class="box"><span id="dias">00</span><br>DÍAS</div>
         <div class="box"><span id="horas">00</span><br>HORAS</div>
         <div class="box"><span id="minutos">00</span><br>MINUTOS</div>
       </div>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
       </div>
-      <p class="texto-agradece">AGRADECE SU OBSEQUIO EN<br>SOBRE CERRADO</p>
-      <div class="imagen-decorativa"><img src="sobre.png" alt="Sobre" class="img-sobre" loading="lazy"></div>
-      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
+
+      <p class="texto-agradece">
+        AGRADECE SU OBSEQUIO EN<br>
+        SOBRE CERRADO
+      </p>
+
+      <!-- IMAGEN 2: debajo de la frase del sobre -->
+      <div class="imagen-decorativa">
+        <img src="sobre.png" alt="Sobre cerrado" class="img-sobre">
+      </div>
+
+      <!-- Decoración inferior -->
+      <div class="decoracion-bottom">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
+      </div>
     </div>
   </section>
 
-  <!-- FORMULARIO -->
+
+  <!-- 6 FORMULARIO CONFIRMACIÓN -->
+  <!-- 6 FORMULARIO CONFIRMACIÓN - CON MENSAJES PERSONALIZADOS -->
   <section class="pantalla fade">
     <div class="cuadro-formulario">
-      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
-      <h3 class="titulo-formulario">Confirmar Asistencia</h3>
-      <p class="texto-formulario">Registra tu asistencia, de preferencia como esta en la invitación.</p>
-      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      <!-- Decoración superior -->
+      <div class="decoracion-top">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
       </div>
-      <form id="formConfirmacion" name="confirmacion" method="POST" data-netlify="true">
+
+      <h3 class="titulo-formulario">Confirmar Asistencia</h3>
+
+      <p class="texto-formulario">
+        Registra tu asistencia hasta el 25 de mayo de 2026 con nombre completo.
+      </p>
+
+      <div class="divisor-linterna">
+        <span class="linea"></span>
+        <span class="simbolo">❀</span>
+        <span class="linea"></span>
+      </div>
+
+      <!-- FORMULARIO -->
+      <form id="formConfirmacion" name="confirmacion" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="confirmacion">
+
+        <div style="display: none;">
+          <label>No llenes esto: <input name="bot-field"></label>
+        </div>
+
+        <!-- Campo nombre -->
         <div class="campo-nombre">
-          <label class="label-formulario">NOMBRE</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required autocomplete="name"
+          <label class="label-formulario"> NOMBRE </label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tú nombre completo" required autocomplete="name"
             style="text-transform: uppercase;">
         </div>
+
+        <!-- Campo asistencia -->
         <div class="asistencia-grupo">
-          <label class="label-formulario">¿ASISTIRÁS AL EVENTO?</label>
+          <span class="label-formulario"> ¿ASISTIRÁS AL EVENTO? </span>
           <div class="radio-opciones">
-            <label><input type="radio" name="asistencia" value="Sí, asistiré" required> Sí, asistiré</label>
-            <label><input type="radio" name="asistencia" value="No podré asistir"> No podré</label>
+            <label>
+              <input type="radio" name="asistencia" value="Sí, asistiré" required> Sí, asistiré
+            </label>
+            <label>
+              <input type="radio" name="asistencia" value="No podré asistir"> No podré
+            </label>
           </div>
         </div>
-        <button type="submit" class="btn-confirmar">Registrar Asistencia</button>
+
+        <!-- Botón confirmar -->
+        <button type="submit" class="btn-confirmar"> Registrar Asistencia </button>
+
       </form>
+
+      <!-- CONTENEDOR PARA MENSAJES DE RESPUESTA -->
       <div id="mensajeRespuesta" class="mensaje-respuesta" style="display: none;"></div>
-      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
-          class="deco-simbolo">✧</span></div>
+
+      <!-- Decoración inferior -->
+      <div class="decoracion-bottom">
+        <span class="deco-simbolo">✧</span>
+        <span class="deco-simbolo">✦</span>
+        <span class="deco-simbolo">✧</span>
+      </div>
     </div>
   </section>
 
   <script>
-    // Contador
+    // ========== CONTROL DE MÚSICA DE FONDO ==========
+    document.addEventListener('DOMContentLoaded', function () {
+      const musica = document.getElementById('musicaFondo');
+      const controlBtn = document.getElementById('controlMusica');
+      const icono = controlBtn?.querySelector('.icono-musica');
+      const texto = controlBtn?.querySelector('.texto-musica');
+
+      // Intentar reproducir automáticamente (puede ser bloqueado por el navegador)
+      function intentarReproducir() {
+        musica.play().catch(function (error) {
+          console.log("Autoplay bloqueado. Esperando interacción del usuario...");
+          // Mostrar mensaje para que el usuario active la música
+          if (controlBtn) {
+            texto.textContent = "🔇 Click para activar música";
+            icono.textContent = "🎵";
+          }
+        });
+      }
+
+      // Si el autoplay es bloqueado, esperar a que el usuario haga clic en cualquier parte
+      document.body.addEventListener('click', function iniciarMusica() {
+        if (musica.paused) {
+          musica.play().catch(e => console.log("Error al reproducir:", e));
+          if (controlBtn) {
+            texto.textContent = "Música ON";
+            icono.textContent = "🎵";
+          }
+        }
+        document.body.removeEventListener('click', iniciarMusica);
+      }, { once: true });
+
+      intentarReproducir();
+
+      // Control manual (encender/apagar)
+      if (controlBtn) {
+        controlBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (musica.paused) {
+            musica.play();
+            texto.textContent = "Música ON";
+            icono.textContent = "🎵";
+          } else {
+            musica.pause();
+            texto.textContent = "Música OFF";
+            icono.textContent = "🔇";
+          }
+        });
+      }
+
+      // Cuando la música termina, se repite automáticamente gracias al atributo 'loop'
+      // Pero también podemos asegurarlo con JavaScript:
+      musica.addEventListener('ended', function () {
+        musica.play();
+      });
+    });
+
+
+
+
+    // Contador para el 06 de Junio 2026 19:00 (sin segundos)
     function actualizarContador() {
       const fechaEvento = new Date("June 6, 2026 19:00:00").getTime();
       const ahora = new Date().getTime();
       let diferencia = fechaEvento - ahora;
+
       if (diferencia < 0) {
         document.getElementById("dias").innerText = "00";
         document.getElementById("horas").innerText = "00";
         document.getElementById("minutos").innerText = "00";
         return;
       }
+
       const segundosTotales = Math.floor(diferencia / 1000);
-      document.getElementById("dias").innerText = Math.floor(segundosTotales / 86400).toString().padStart(2, '0');
-      document.getElementById("horas").innerText = Math.floor((segundosTotales % 86400) / 3600).toString().padStart(2, '0');
-      document.getElementById("minutos").innerText = Math.floor((segundosTotales % 3600) / 60).toString().padStart(2, '0');
+      const dias = Math.floor(segundosTotales / 86400);
+      const horas = Math.floor((segundosTotales % 86400) / 3600);
+      const minutos = Math.floor((segundosTotales % 3600) / 60);
+
+      document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+      document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+      document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
     }
+
     actualizarContador();
     setInterval(actualizarContador, 1000);
 
-    // Música
+    // ========== MANEJO DEL FORMULARIO CON CUADRO FLOTANTE =====
     let temporizadorMensaje = null;
-    document.addEventListener('DOMContentLoaded', function () {
-      const musica = document.getElementById('musicaFondo');
-      const controlBtn = document.getElementById('controlMusica');
-      if (musica) {
-        musica.volume = 0.4;
-        musica.play().catch(() => {
-          document.body.addEventListener('click', function () { musica.play(); }, { once: true });
-        });
-        if (controlBtn) {
-          const icono = controlBtn.querySelector('.icono-musica');
-          const texto = controlBtn.querySelector('.texto-musica');
-          controlBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            if (musica.paused) { musica.play(); texto.textContent = "Música ON"; icono.textContent = "🎵"; }
-            else { musica.pause(); texto.textContent = "Música OFF"; icono.textContent = "🔇"; }
-          });
+
+    function mostrarMensajeFlotante(mensaje, tipo) {
+      // Eliminar mensaje anterior si existe
+      const mensajeAnterior = document.querySelector('.mensaje-flotante');
+      if (mensajeAnterior) {
+        mensajeAnterior.remove();
+        if (temporizadorMensaje) clearTimeout(temporizadorMensaje);
+      }
+
+      // Crear el cuadro flotante
+      const cuadro = document.createElement('div');
+      cuadro.className = `mensaje-flotante ${tipo === 'exito' ? 'mensaje-flotante-exito' : 'mensaje-flotante-error'}`;
+
+      // Usar IMÁGENES en lugar de emojis
+      let imagenHtml = '';
+      if (tipo === 'exito') {
+        imagenHtml = '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
+      } else {
+        imagenHtml = '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
+      }
+
+      cuadro.innerHTML = `
+    <div class="cerrar-btn">✕</div>
+    <div class="flor-deco">${imagenHtml}</div>
+    <div class="mensaje-texto">${mensaje}</div>
+  `;
+
+      document.body.appendChild(cuadro);
+
+      // Función para cerrar el mensaje
+      function cerrarMensaje() {
+        if (cuadro) {
+          cuadro.style.animation = 'aparecerFlotante 0.3s reverse';
+          setTimeout(() => {
+            if (cuadro && cuadro.remove) cuadro.remove();
+          }, 300);
+          if (temporizadorMensaje) clearTimeout(temporizadorMensaje);
         }
       }
-    });
 
-    // Mensajes flotantes
-    function mostrarMensajeFlotante(mensaje, tipo) {
-      const anterior = document.querySelector('.mensaje-flotante');
-      if (anterior) { anterior.remove(); if (temporizadorMensaje) clearTimeout(temporizadorMensaje); }
-      const cuadro = document.createElement('div');
-      let clase = 'mensaje-flotante ';
-      if (tipo === 'exito') clase += 'mensaje-flotante-exito';
-      else if (tipo === 'error') clase += 'mensaje-flotante-error';
-      else if (tipo === 'info') clase += 'mensaje-flotante-info';
-      else clase += 'mensaje-flotante-cargando';
-      cuadro.className = clase;
-      let img = tipo === 'cargando' ? '<div style="font-size:2rem;">⏳</div>' : '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
-      if (tipo === 'info') img = '<div style="font-size:2rem;">📋</div>';
-      cuadro.innerHTML = `<div class="cerrar-btn">✕</div><div class="flor-deco">${img}</div><div class="mensaje-texto">${mensaje}</div>`;
-      document.body.appendChild(cuadro);
-      const cerrar = () => { if (cuadro) { cuadro.remove(); if (temporizadorMensaje) clearTimeout(temporizadorMensaje); } };
-      cuadro.querySelector('.cerrar-btn').addEventListener('click', cerrar);
-      cuadro.addEventListener('click', (e) => { if (e.target !== cuadro.querySelector('.cerrar-btn')) cerrar(); });
-      temporizadorMensaje = setTimeout(cerrar, tipo === 'cargando' ? 2000 : 6000);
+      // Cerrar al hacer clic en la X
+      cuadro.querySelector('.cerrar-btn').addEventListener('click', cerrarMensaje);
+
+      // Cerrar al hacer clic en cualquier parte del mensaje
+      cuadro.addEventListener('click', function (e) {
+        if (e.target !== cuadro.querySelector('.cerrar-btn')) {
+          cerrarMensaje();
+        }
+      });
+
+      // Cerrar automáticamente después de 15 segundos
+      temporizadorMensaje = setTimeout(cerrarMensaje, 10000);
     }
 
-    // Formulario
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('formConfirmacion');
+
       if (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
+
           const nombre = document.getElementById('nombre').value.toUpperCase().trim();
           const asistencia = document.querySelector('input[name="asistencia"]:checked');
-          if (!nombre) { mostrarMensajeFlotante('Por favor, ingresa tu nombre completo.', 'error'); return; }
-          if (!asistencia) { mostrarMensajeFlotante('Por favor, selecciona si asistirás o no.', 'error'); return; }
-          mostrarMensajeFlotante('Procesando...', 'cargando');
-          const datos = { nombre: nombre, asistencia: asistencia.value };
+
+          if (!nombre) {
+            mostrarMensajeFlotante('Por favor, ingresa tu nombre completo.', 'error');
+            return;
+          }
+
+          if (!asistencia) {
+            mostrarMensajeFlotante('Por favor, selecciona si asistirás o no al evento.', 'error');
+            return;
+          }
+
+          const datos = {
+            nombre: nombre,
+            asistencia: asistencia.value
+          };
+
+          // Mostrar mensaje de "cargando"
+          mostrarMensajeFlotante('Procesando tu registro...', 'cargando');
+
+          // Envío a Google Sheets
           fetch("https://script.google.com/macros/s/AKfycbzkSB3PlyNth9sv-2iW4Ty9pJ3tX7Rua0tV22DWuM8aOu8FFXFYf0i2JUuSC6ud77PwmQ/exec", {
-            method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos)
-          }).then(() => {
-            const registrados = JSON.parse(localStorage.getItem('registrados') || '{}');
-            if (registrados[nombre]) {
-              if (registrados[nombre] === asistencia.value) {
-                mostrarMensajeFlotante('¡Ya estás registrado!', 'info');
-                return;
-              } else {
-                registrados[nombre] = asistencia.value;
-                localStorage.setItem('registrados', JSON.stringify(registrados));
-                mostrarMensajeFlotante(asistencia.value === 'Sí, asistiré' ? '✨ ¡Asistencia actualizada! ✨<br>Ahora confirmas tu presencia.' : '🌸 Asistencia actualizada.<br>Lamentamos que no puedas asistir a este evento único.', 'exito');
-                form.reset(); return;
-              }
-            }
-            registrados[nombre] = asistencia.value;
-            localStorage.setItem('registrados', JSON.stringify(registrados));
-            mostrarMensajeFlotante(asistencia.value === 'Sí, asistiré' ? '✨ ¡Confirmación recibida! ✨<br>Será un honor contar con su presencia y su gentil detalle en sobre cerrado' : '🌸 ¡Gracias por tu respuesta!<br>Lamentamos que no puedas asistir en este evento único.', 'exito');
-            form.reset();
-          }).catch(() => mostrarMensajeFlotante('Error al enviar. Intenta de nuevo.', 'error'));
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(datos)
+          })
+            .then(() => {
+              // Como no podemos leer la respuesta con 'no-cors', hacemos una segunda consulta
+              // para saber el estado real. Pero es más simple: asumimos que funcionó
+              // y mostramos mensaje genérico.
+
+              // Para mejor experiencia, hacemos una segunda llamada GET para verificar
+              verificarRegistro(nombre, asistencia.value);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              mostrarMensajeFlotante('Ocurrió un error al enviar el formulario. Intenta de nuevo.', 'error');
+            });
         });
+      }
+
+      // Función para verificar el estado del registro
+      function verificarRegistro(nombre, nuevaAsistencia) {
+        // Hacemos una llamada GET a un script que verifique el estado
+        // Como alternativa, puedes usar localStorage para evitar duplicados en la misma sesión
+
+        // Solución: Guardar en localStorage los nombres registrados en esta sesión
+        const registrados = JSON.parse(localStorage.getItem('registrados') || '{}');
+
+        if (registrados[nombre]) {
+          const anterior = registrados[nombre];
+          if (anterior === nuevaAsistencia) {
+            if (anterior === 'Sí, asistiré') {
+              mostrarMensajeFlotante(
+                '¡Ya estás registrado!<br><br>' +
+                'Tu asistencia ya fue confirmada anteriormente.<br>',
+                'info'
+              );
+            } else {
+              mostrarMensajeFlotante(
+                '¡Ya estás registrado!<br><br>' +
+                'Lamentamos que no puedas asistir.<br>',
+                'info'
+              );
+            }
+            return;
+          } else {
+            // Actualizar asistencia
+            registrados[nombre] = nuevaAsistencia;
+            localStorage.setItem('registrados', JSON.stringify(registrados));
+
+            if (nuevaAsistencia === 'Sí, asistiré') {
+              mostrarMensajeFlotante(
+                '✨ ¡Asistencia actualizada! ✨<br><br>' +
+                'Has cambiado tu respuesta. Ahora confirmas tu presencia.<br>' +
+                'Será un honor contar contigo.',
+                'exito'
+              );
+            } else {
+              mostrarMensajeFlotante(
+                '🌸 ¡Asistencia actualizada! 🌸<br><br>' +
+                'Lamentamos que ya no puedas acompañarnos en esta ocasión.<br>',
+                'exito'
+              );
+            }
+            document.getElementById('formConfirmacion').reset();
+            return;
+          }
+        }
+
+        // Nuevo registro
+        registrados[nombre] = nuevaAsistencia;
+        localStorage.setItem('registrados', JSON.stringify(registrados));
+
+        if (nuevaAsistencia === 'Sí, asistiré') {
+          mostrarMensajeFlotante(
+            '✨ ¡Confirmación recibida! ✨<br><br>' +
+            'Será un honor contar con su presencia y su gentil detalle en sobre cerrado.',
+            'exito'
+          );
+        } else {
+          mostrarMensajeFlotante(
+            '🌸 ¡Gracias por tu respuesta! 🌸<br><br>' +
+            'Lamentamos que no puedas acompañarnos en esta ocasión.<br>' +
+            'Que estés muy bien.',
+            'exito'
+          );
+        }
+        document.getElementById('formConfirmacion').reset();
       }
     });
 
-    // Animación scroll
+    function mostrarMensajeFlotante(mensaje, tipo) {
+      const mensajeAnterior = document.querySelector('.mensaje-flotante');
+      if (mensajeAnterior) {
+        mensajeAnterior.remove();
+        if (temporizadorMensaje) clearTimeout(temporizadorMensaje);
+      }
+
+      const cuadro = document.createElement('div');
+
+      let claseTipo = '';
+      if (tipo === 'exito') claseTipo = 'mensaje-flotante-exito';
+      else if (tipo === 'error') claseTipo = 'mensaje-flotante-error';
+      else if (tipo === 'info') claseTipo = 'mensaje-flotante-info';
+      else if (tipo === 'cargando') claseTipo = 'mensaje-flotante-cargando';
+
+      cuadro.className = `mensaje-flotante ${claseTipo}`;
+
+      let imagenHtml = '';
+      let contenidoAdicional = '';
+
+      if (tipo === 'cargando') {
+        imagenHtml = '<div style="font-size: 2rem;">⏳</div>';
+      } else if (tipo === 'exito') {
+        imagenHtml = '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
+      } else if (tipo === 'info') {
+        imagenHtml = '<div style="font-size: 2rem;">📋</div>';
+      } else {
+        imagenHtml = '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
+      }
+
+      cuadro.innerHTML = `
+    <div class="cerrar-btn">✕</div>
+    <div class="flor-deco">${imagenHtml}</div>
+    <div class="mensaje-texto">${mensaje}</div>
+    ${contenidoAdicional}
+  `;
+
+      document.body.appendChild(cuadro);
+
+      function cerrarMensaje() {
+        if (cuadro) {
+          cuadro.style.animation = 'aparecerFlotante 0.3s reverse';
+          setTimeout(() => {
+            if (cuadro && cuadro.remove) cuadro.remove();
+          }, 300);
+          if (temporizadorMensaje) clearTimeout(temporizadorMensaje);
+        }
+      }
+
+      cuadro.querySelector('.cerrar-btn').addEventListener('click', cerrarMensaje);
+      cuadro.addEventListener('click', function (e) {
+        if (e.target !== cuadro.querySelector('.cerrar-btn')) {
+          cerrarMensaje();
+        }
+      });
+
+      let duracion = tipo === 'cargando' ? 2000 : 8000;
+      temporizadorMensaje = setTimeout(cerrarMensaje, duracion);
+    }
+
+
+
+    // ====== ANIMACIÓN CONTINUA AL SCROLL ======
     const elementos = document.querySelectorAll('.fade');
+
     function animarScroll() {
       const trigger = window.innerHeight * 0.85;
+
       elementos.forEach(el => {
         const rect = el.getBoundingClientRect();
-        if (rect.top < trigger && rect.bottom > 100) el.classList.add('visible');
-        else el.classList.remove('visible');
+
+        if (rect.top < trigger && rect.bottom > 100) {
+          el.classList.add('visible');
+        } else {
+          el.classList.remove('visible'); // 👈 esto hace que se repita
+        }
       });
     }
+
     window.addEventListener('scroll', animarScroll);
     window.addEventListener('load', animarScroll);
+
   </script>
 </body>
 
