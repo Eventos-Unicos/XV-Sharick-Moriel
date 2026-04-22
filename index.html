@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>XV Sharick Moriel</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cinzel', serif;
+      scroll-behavior: smooth;
+      background: #0e0c1a;
+    }
+
+    /* ========== FONDO GLOBAL CON LINTERNAS ========== */
+    .fondo-global {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .fondo-global img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    .capa-oscura-global {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    /* pantallas secciones */
+    .pantalla {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      background: transparent;
+    }
+
+    /* VIDEO - PANTALLA PRINCIPAL */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .video-principal {
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+    }
+
+    .video-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* ========== MARCO ESTILO RAPUNZEL ========== */
+    .marco-video-rapunzel {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      background: transparent;
+      border-radius: 30px;
+    }
+
+    .marco-video-rapunzel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #F7D44A, #D4AF37, #E8A0BF, #C77DFF, #F7D44A) 1;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(46, 28, 58, 0.3), rgba(30, 16, 40, 0.1));
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+      animation: brilloMarco 3s infinite alternate;
+    }
+
+    .marco-video-rapunzel::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(247, 212, 74, 0.4);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    /* Esquinas y decoraciones */
+    .esquina-marco {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      z-index: 10;
+      color: #F7D44A;
+      font-size: 24px;
+      text-shadow: 0 0 10px #F7D44A;
+      animation: brilloEsquina 2s infinite alternate;
+    }
+
+    .esquina-marco-1 {
+      top: -15px;
+      left: -15px;
+    }
+
+    .esquina-marco-1::before {
+      content: "✦";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .esquina-marco-1::after {
+      content: "✧";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 16px;
+    }
+
+    .esquina-marco-2 {
+      top: -15px;
+      right: -15px;
+    }
+
+    .esquina-marco-2::before {
+      content: "✦";
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .esquina-marco-2::after {
+      content: "✧";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 16px;
+    }
+
+    .esquina-marco-3 {
+      bottom: -15px;
+      left: -15px;
+    }
+
+    .esquina-marco-3::before {
+      content: "✧";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .esquina-marco-3::after {
+      content: "✦";
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-size: 16px;
+    }
+
+    .esquina-marco-4 {
+      bottom: -15px;
+      right: -15px;
+    }
+
+    .esquina-marco-4::before {
+      content: "✧";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .esquina-marco-4::after {
+      content: "✦";
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-size: 16px;
+    }
+
+    .linterna-marco {
+      position: absolute;
+      font-size: 20px;
+      color: #F7D44A;
+      text-shadow: 0 0 10px rgba(247, 212, 74, 0.8);
+      animation: flotarLinterna 3s infinite ease-in-out;
+    }
+
+    .linterna-marco-1 {
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 0s;
+    }
+
+    .linterna-marco-2 {
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 1s;
+    }
+
+    .linterna-marco-3 {
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation-delay: 0.5s;
+    }
+
+    .linterna-marco-4 {
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation-delay: 1.5s;
+    }
+
+    .flor-marco {
+      position: absolute;
+      font-size: 14px;
+      color: #E8A0BF;
+      text-shadow: 0 0 8px #E8A0BF;
+      animation: girarFlor 4s infinite linear;
+    }
+
+    .flor-marco-1 {
+      top: 10px;
+      left: 10px;
+    }
+
+    .flor-marco-2 {
+      top: 10px;
+      right: 10px;
+    }
+
+    .flor-marco-3 {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    .flor-marco-4 {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    /* Animaciones */
+    @keyframes brilloMarco {
+      0% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+      }
+
+      100% {
+        box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+      }
+    }
+
+    @keyframes brilloEsquina {
+      0% {
+        opacity: 0.5;
+        text-shadow: 0 0 5px #F7D44A;
+      }
+
+      100% {
+        opacity: 1;
+        text-shadow: 0 0 20px #F7D44A;
+      }
+    }
+
+    @keyframes flotarLinterna {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-5px) translateX(3px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes girarFlor {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* NOMBRE */
+    .nombre {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .fondo-castillo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .img-castillo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .overlay-castillo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .contenido-nombre {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .nombre .subtitulo {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      letter-spacing: 8px;
+      color: #F7D44A;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .nombre .nombre-quince {
+      font-family: 'Great Vibes', cursive;
+      font-size: 6rem;
+      color: #FFFFFF;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 4px 15px rgba(0, 0, 0, 0.6);
+      margin: 0.5rem 0;
+      letter-spacing: 2px;
+    }
+
+    /* CUADROS GENERALES */
+    .cuadro-rapunzel,
+    .cuadro-ubicacion,
+    .cuadro-contador,
+    .cuadro-formulario {
+      background: linear-gradient(145deg, rgba(154, 121, 174, 0.5), rgba(30, 16, 40, 0.7));
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    .cuadro-rapunzel::before,
+    .cuadro-ubicacion::before,
+    .cuadro-contador::before,
+    .cuadro-formulario::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    /* Decoraciones */
+    .decoracion-top,
+    .decoracion-bottom {
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      letter-spacing: 10px;
+      color: #F7D44A;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+    }
+
+    .decoracion-bottom {
+      margin-top: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    .deco-simbolo {
+      display: inline-block;
+      animation: flotarSuave 3s infinite ease-in-out;
+    }
+
+    .deco-simbolo:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .deco-simbolo:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .deco-simbolo:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes flotarSuave {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-3px);
+        opacity: 1;
+      }
+    }
+
+    .divisor-linterna {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 1.2rem 0;
+    }
+
+    .linea {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #F7D44A, transparent);
+    }
+
+    .simbolo {
+      color: #F7D44A;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Textos */
+    .texto-historia,
+    .texto-preparate,
+    .texto-reserva,
+    .texto-formulario,
+    .texto-agradece {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 0.5rem 0;
+      font-weight: 600;
+    }
+
+    .nombre-padre,
+    .nombre-madre {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px #fad954;
+      margin: 0.5rem 0;
+      font-weight: 600;
+      background: rgba(142, 118, 146, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    .invitacion-texto {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+      margin: 0.5rem 0;
+      font-weight: 600;
+    }
+
+    /* Fecha */
+    .fecha-rapunzel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 0.8rem;
+    }
+
+    .linterna-simbolo {
+      font-size: 1.2rem;
+      color: #F7D44A;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+      animation: latir 2s infinite;
+    }
+
+    @keyframes latir {
+
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 12px #F7D44A;
+      }
+    }
+
+    .fecha {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 12px #F7D44A;
+      letter-spacing: 3px;
+      background: rgba(142, 118, 146, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+    }
+
+    /* Ubicación */
+    .titulo-ubicacion,
+    .titulo-formulario {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      color: #FFFFFF;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .direccion {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      margin: 1rem 0;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .hora-container {
+      margin: 1rem 0;
+    }
+
+    .hora-label {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #F7D44A;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+      margin-right: 8px;
+    }
+
+    .hora-valor {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    }
+
+    /* Botones */
+    .mapa-container {
+      position: relative;
+      margin: 1rem 0;
+      border-radius: 30px;
+      overflow: hidden;
+      display: inline-block;
+      width: auto;
+      max-width: 90%;
+    }
+
+    .mapa-fondo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      border-radius: 30px;
+      opacity: 0.4;
+    }
+
+    .btn-ubicacion {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px #F7D44A;
+      background: rgba(89, 60, 94, 0.3);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      padding: 15px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: flotarRegalo 2s infinite ease-in-out;
+    }
+
+    .btn-ubicacion:hover {
+      background: rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.9);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      transform: scale(1.02);
+    }
+
+    @keyframes flotarRegalo {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .regalo-emoji {
+      font-size: 3rem;
+      margin-top: 0.5rem;
+      animation: flotarRegalo 2s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    .regalo-texto {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+      letter-spacing: 1px;
+    }
+
+    /* CONTADOR */
+    .contador-box {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      font-size: 1.0rem;
+
+    }
+
+    .box {
+      background: rgba(142, 118, 146, 0.3);
+      backdrop-filter: blur(4px);
+      padding: 0.8rem 1rem;
+      border-radius: 20px;
+      color: #F7D44A;
+      min-width: 85px;
+      text-align: center;
+      box-shadow: 0 8px 14px rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .box span {
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: block;
+      color: #F7D44A;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+      background: transparent;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .box br {
+      display: none;
+    }
+
+    /* IMÁGENES DECORATIVAS */
+    .imagen-decorativa {
+      margin: 0.8rem 0;
+      text-align: center;
+    }
+
+    .img-flor,
+    .img-sobre {
+      max-width: 80px;
+      height: auto;
+      display: inline-block;
+      animation: flotarImagen 3s infinite ease-in-out;
+    }
+
+    .img-flor {
+      max-width: 140px;
+    }
+
+    .img-sobre {
+      max-width: 170px;
+    }
+
+    @keyframes flotarImagen {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* FORMULARIO */
+    .campo-nombre,
+    .asistencia-grupo {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .campo-nombre,
+    .asistencia-grupo label {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .campo-nombre input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 60px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      background: rgba(9, 4, 9, 0.3);
+      color: #FFFFFF;
+      transition: 0.2s;
+    }
+
+    .campo-nombre input:focus {
+      outline: none;
+      border-color: #F7D44A;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .radio-opciones {
+      display: flex;
+      gap: 2rem;
+      background: rgba(9, 4, 9, 0.3);
+      padding: 12px 16px;
+      border-radius: 100px;
+      justify-content: center;
+      border: 1px solid rgba(223, 185, 60, 0.3);
+    }
+
+    .radio-opciones label {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      color: #FFFFFF;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .radio-opciones input {
+      width: 18px;
+      height: 18px;
+      accent-color: #F7D44A;
+      margin: 0;
+    }
+
+    button {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      color: #FFFFFF;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 14px 0;
+      width: 100%;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 12px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      animation: flotarRegalo 2s infinite ease-in-out;
+    }
+
+    button:hover {
+      background: rgba(212, 175, 55, 0.3);
+      border-color: #F7D44A;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      transform: scale(1.02);
+    }
+
+    /* MENSAJES FLOTANTES */
+    .mensaje-flotante {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      min-width: 280px;
+      max-width: 400px;
+      padding: 1.5rem 2rem;
+      border-radius: 32px;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
+      animation: aparecerFlotante 0.4s ease-out;
+      cursor: pointer;
+    }
+
+    @keyframes aparecerFlotante {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .mensaje-flotante-exito {
+      background: linear-gradient(145deg, rgba(46, 28, 58, 0.95), rgba(30, 16, 40, 0.98));
+      border: 2px solid rgba(212, 175, 55, 0.7);
+      color: #FFFFFF;
+    }
+
+    .mensaje-flotante-error {
+      background: linear-gradient(145deg, rgba(80, 40, 50, 0.95), rgba(50, 25, 35, 0.98));
+      border: 2px solid rgba(212, 175, 55, 0.5);
+      color: #FFFFFF;
+    }
+
+    .mensaje-flotante-info {
+      background: linear-gradient(145deg, rgba(80, 70, 100, 0.95), rgba(50, 40, 70, 0.98));
+      border: 2px solid rgba(100, 150, 200, 0.7);
+      color: #FFFFFF;
+    }
+
+    .mensaje-flotante-cargando {
+      background: linear-gradient(145deg, rgba(46, 28, 58, 0.95), rgba(30, 16, 40, 0.98));
+      border: 2px solid rgba(212, 175, 55, 0.5);
+      color: #F7D44A;
+    }
+
+    .mensaje-flotante .cerrar-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #F7D44A;
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+
+    .mensaje-flotante .cerrar-btn:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .mensaje-flotante .flor-deco {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #F7D44A;
+    }
+
+    .imagen-mensaje {
+      width: 50px;
+      height: auto;
+      display: inline-block;
+      animation: flotarImagen 3s infinite ease-in-out;
+    }
+
+    /* CONTROLES */
+    .control-musica {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 50px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      z-index: 9999;
+      transition: all 0.3s ease;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: #F7D44A;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+    }
+
+    .control-musica:hover {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: rgba(212, 175, 55, 0.8);
+      transform: scale(1.05);
+    }
+
+    .icono-musica {
+      font-size: 1rem;
+      animation: vibrarMusica 2s infinite ease-in-out;
+    }
+
+    @keyframes vibrarMusica {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .texto-musica {
+      letter-spacing: 1px;
+    }
+
+    /* EFECTO FADE */
+    .fade {
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+      filter: blur(10px);
+      transition: all 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform, opacity;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+      box-shadow: 0 0 40px rgba(247, 212, 74, 0.15);
+    }
+
+    /* OPTIMIZACIONES PARA MÓVIL - REDUCIR ANIMACIONES */
+    @media (max-width: 550px) {
+      .marco-video-rapunzel {
+        padding: 12px;
+      }
+
+      .esquina-marco {
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+      }
+
+      .linterna-marco {
+        font-size: 14px;
+      }
+
+      .flor-marco {
+        font-size: 10px;
+      }
+
+      .nombre .nombre-quince {
+        font-size: 3.8rem;
+      }
+
+      .nombre .subtitulo {
+        font-size: 0.9rem;
+        letter-spacing: 5px;
+      }
+
+      .cuadro-rapunzel,
+      .cuadro-ubicacion,
+      .cuadro-contador,
+      .cuadro-formulario {
+        padding: 1.5rem 1.2rem;
+        border-radius: 32px;
+      }
+
+      .box {
+        min-width: 65px;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .box span {
+        font-size: 1.6rem;
+      }
+
+      .img-flor {
+        max-width: 40px;
+      }
+
+      .img-sobre {
+        max-width: 45px;
+      }
+
+      .radio-opciones {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* Reducir animaciones en móvil para mejor rendimiento */
+      .deco-simbolo,
+      .linterna-marco,
+      .flor-marco,
+      .box,
+      .btn-ubicacion,
+      button,
+      .regalo-emoji,
+      .imagen-mensaje {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .marco-video-rapunzel::before {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- MÚSICA DE FONDO -->
+  <audio id="musicaFondo" loop autoplay>
+    <source src="AUDIO_FONDO.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="control-musica" id="controlMusica">
+    <span class="icono-musica">🎵</span>
+    <span class="texto-musica">Música ON</span>
+  </div>
+
+  <!-- FONDO GLOBAL -->
+  <div class="fondo-global">
+    <img src="LUCES_MOVIMIENTO.gif" alt="Linternas de Rapunzel" loading="lazy">
+  </div>
+  <div class="capa-oscura-global"></div>
+
+  <!-- VIDEO PRINCIPAL -->
+  <div class="video-container">
+    <div class="marco-video-rapunzel">
+      <div class="esquina-marco esquina-marco-1"></div>
+      <div class="esquina-marco esquina-marco-2"></div>
+      <div class="esquina-marco esquina-marco-3"></div>
+      <div class="esquina-marco esquina-marco-4"></div>
+      <div class="linterna-marco linterna-marco-1">❀</div>
+      <div class="linterna-marco linterna-marco-2">❀</div>
+      <div class="linterna-marco linterna-marco-3">❀</div>
+      <div class="linterna-marco linterna-marco-4">❀</div>
+      <div class="flor-marco flor-marco-1">🌸</div>
+      <div class="flor-marco flor-marco-2">🌸</div>
+      <div class="flor-marco flor-marco-3">🌸</div>
+      <div class="flor-marco flor-marco-4">🌺</div>
+      <video autoplay muted playsinline loop class="video-principal" preload="metadata">
+        <source src="sharick_video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- NOMBRE -->
+  <section class="pantalla nombre fade">
+    <div class="fondo-castillo">
+      <img src="FONDO_CASTILLO.png" alt="Castillo" class="img-castillo" loading="lazy">
+      <div class="overlay-castillo"></div>
+    </div>
+    <div class="contenido-nombre">
+      <h2 class="subtitulo">MIS XV AÑOS</h2>
+      <h1 class="nombre-quince">Sharick Moriel</h1>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="pantalla fade">
+    <div class="cuadro-rapunzel">
+      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+      <p class="texto-historia">"HACE 15 AÑOS NACIÓ EN NUESTRO HOGAR UNA DULCE NIÑA, QUE CON LUZ RADIENTE, VINO A
+        ILUMINAR NUESTRAS VIDAS, COLMÁNDONOS DE ALEGRÍAS E ILUSIONES, ASÍ LA HEMOS VISTO CRECER DÍA A DÍA PARA HOY,
+        CONVERTIRSE EN UNA HERMOSA SEÑORITA."</p>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <div class="padres-rapunzel">
+        <p class="nombre-padre">SR. JOSÉ MORIEL ROCOCHANO</p>
+        <p class="nombre-madre">SRA. ELENA PERERO GONZÁLEZ</p>
+      </div>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <p class="invitacion-texto">JUNTO A MIS PADRES QUEREMOS INVITARLES A COMPARTIR UN MOMENTO MUY ESPECIAL PARA
+        NOSOTROS</p>
+      <div class="fecha-rapunzel"><span class="linterna-simbolo">◌</span><span class="fecha">SÁBADO 06 ·
+          JUNIO</span><span class="linterna-simbolo">◌</span></div>
+      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="pantalla fade">
+    <div class="cuadro-ubicacion">
+      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+      <h2 class="titulo-ubicacion">LUGAR DE RECEPCIÓN</h2>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <p class="direccion">LA 25 ENTRE CHÁMBERS Y ROSENDO AVILES</p>
+      <div class="hora-container"><span class="hora-label">HORA:</span><span class="hora-valor">19:00</span></div>
+      <div class="mapa-container"><img src="mapa.png" alt="Mapa" class="mapa-fondo" loading="lazy"><a
+          class="btn-ubicacion" href="https://maps.app.goo.gl/TTVf24gznETEnCid9" target="_blank">📍 ¿CÓMO LLEGAR?</a>
+      </div>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <p class="regalo-texto">EL REGALO MÁS VALIOSO SERÁ TU COMPAÑÍA</p>
+      <div class="regalo-emoji">🎁</div>
+      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <section class="pantalla fade">
+    <div class="cuadro-contador">
+      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+      <p class="texto-reserva">SE RESERVA EL COLOR LILA DE USO<br>EXCLUSIVO PARA LA QUINCEAÑERA</p>
+      <div class="imagen-decorativa"><img src="VESTIDO.png" alt="Vestido" class="img-flor" loading="lazy"></div>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <p class="texto-preparate">PREPÁRATE PORQUE FALTAN</p>
+      <div class="contador-box">
+        <div class="box"><span id="dias">00</span><br>DÍAS</div>
+        <div class="box"><span id="horas">00</span><br>HORAS</div>
+        <div class="box"><span id="minutos">00</span><br>MINUTOS</div>
+      </div>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <p class="texto-agradece">AGRADECE SU OBSEQUIO EN<br>SOBRE CERRADO</p>
+      <div class="imagen-decorativa"><img src="sobre.png" alt="Sobre" class="img-sobre" loading="lazy"></div>
+      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="pantalla fade">
+    <div class="cuadro-formulario">
+      <div class="decoracion-top"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+      <h3 class="titulo-formulario">Confirmar Asistencia</h3>
+      <p class="texto-formulario">Registra tu asistencia, de preferencia como esta en la invitación.</p>
+      <div class="divisor-linterna"><span class="linea"></span><span class="simbolo">❀</span><span class="linea"></span>
+      </div>
+      <form id="formConfirmacion" name="confirmacion" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="confirmacion">
+        <div class="campo-nombre">
+          <label class="label-formulario">NOMBRE</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required autocomplete="name"
+            style="text-transform: uppercase;">
+        </div>
+        <div class="asistencia-grupo">
+          <label class="label-formulario">¿ASISTIRÁS AL EVENTO?</label>
+          <div class="radio-opciones">
+            <label><input type="radio" name="asistencia" value="Sí, asistiré" required> Sí, asistiré</label>
+            <label><input type="radio" name="asistencia" value="No podré asistir"> No podré</label>
+          </div>
+        </div>
+        <button type="submit" class="btn-confirmar">Registrar Asistencia</button>
+      </form>
+      <div id="mensajeRespuesta" class="mensaje-respuesta" style="display: none;"></div>
+      <div class="decoracion-bottom"><span class="deco-simbolo">✧</span><span class="deco-simbolo">✦</span><span
+          class="deco-simbolo">✧</span></div>
+    </div>
+  </section>
+
+  <script>
+    // Contador
+    function actualizarContador() {
+      const fechaEvento = new Date("June 6, 2026 19:00:00").getTime();
+      const ahora = new Date().getTime();
+      let diferencia = fechaEvento - ahora;
+      if (diferencia < 0) {
+        document.getElementById("dias").innerText = "00";
+        document.getElementById("horas").innerText = "00";
+        document.getElementById("minutos").innerText = "00";
+        return;
+      }
+      const segundosTotales = Math.floor(diferencia / 1000);
+      document.getElementById("dias").innerText = Math.floor(segundosTotales / 86400).toString().padStart(2, '0');
+      document.getElementById("horas").innerText = Math.floor((segundosTotales % 86400) / 3600).toString().padStart(2, '0');
+      document.getElementById("minutos").innerText = Math.floor((segundosTotales % 3600) / 60).toString().padStart(2, '0');
+    }
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+
+    // Música
+    let temporizadorMensaje = null;
+    document.addEventListener('DOMContentLoaded', function () {
+      const musica = document.getElementById('musicaFondo');
+      const controlBtn = document.getElementById('controlMusica');
+      if (musica) {
+        musica.volume = 0.4;
+        musica.play().catch(() => {
+          document.body.addEventListener('click', function () { musica.play(); }, { once: true });
+        });
+        if (controlBtn) {
+          const icono = controlBtn.querySelector('.icono-musica');
+          const texto = controlBtn.querySelector('.texto-musica');
+          controlBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (musica.paused) { musica.play(); texto.textContent = "Música ON"; icono.textContent = "🎵"; }
+            else { musica.pause(); texto.textContent = "Música OFF"; icono.textContent = "🔇"; }
+          });
+        }
+      }
+    });
+
+    // Mensajes flotantes
+    function mostrarMensajeFlotante(mensaje, tipo) {
+      const anterior = document.querySelector('.mensaje-flotante');
+      if (anterior) { anterior.remove(); if (temporizadorMensaje) clearTimeout(temporizadorMensaje); }
+      const cuadro = document.createElement('div');
+      let clase = 'mensaje-flotante ';
+      if (tipo === 'exito') clase += 'mensaje-flotante-exito';
+      else if (tipo === 'error') clase += 'mensaje-flotante-error';
+      else if (tipo === 'info') clase += 'mensaje-flotante-info';
+      else clase += 'mensaje-flotante-cargando';
+      cuadro.className = clase;
+      let img = tipo === 'cargando' ? '<div style="font-size:2rem;">⏳</div>' : '<img src="flor_exito.png" alt="🌸" class="imagen-mensaje">';
+      if (tipo === 'info') img = '<div style="font-size:2rem;">📋</div>';
+      cuadro.innerHTML = `<div class="cerrar-btn">✕</div><div class="flor-deco">${img}</div><div class="mensaje-texto">${mensaje}</div>`;
+      document.body.appendChild(cuadro);
+      const cerrar = () => { if (cuadro) { cuadro.remove(); if (temporizadorMensaje) clearTimeout(temporizadorMensaje); } };
+      cuadro.querySelector('.cerrar-btn').addEventListener('click', cerrar);
+      cuadro.addEventListener('click', (e) => { if (e.target !== cuadro.querySelector('.cerrar-btn')) cerrar(); });
+      temporizadorMensaje = setTimeout(cerrar, tipo === 'cargando' ? 2000 : 6000);
+    }
+
+    // Formulario
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('formConfirmacion');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const nombre = document.getElementById('nombre').value.toUpperCase().trim();
+          const asistencia = document.querySelector('input[name="asistencia"]:checked');
+          if (!nombre) { mostrarMensajeFlotante('Por favor, ingresa tu nombre completo.', 'error'); return; }
+          if (!asistencia) { mostrarMensajeFlotante('Por favor, selecciona si asistirás o no.', 'error'); return; }
+          mostrarMensajeFlotante('Procesando...', 'cargando');
+          const datos = { nombre: nombre, asistencia: asistencia.value };
+          fetch("https://script.google.com/macros/s/AKfycbzkSB3PlyNth9sv-2iW4Ty9pJ3tX7Rua0tV22DWuM8aOu8FFXFYf0i2JUuSC6ud77PwmQ/exec", {
+            method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos)
+          }).then(() => {
+            const registrados = JSON.parse(localStorage.getItem('registrados') || '{}');
+            if (registrados[nombre]) {
+              if (registrados[nombre] === asistencia.value) {
+                mostrarMensajeFlotante('¡Ya estás registrado!', 'info');
+                return;
+              } else {
+                registrados[nombre] = asistencia.value;
+                localStorage.setItem('registrados', JSON.stringify(registrados));
+                mostrarMensajeFlotante(asistencia.value === 'Sí, asistiré' ? '✨ ¡Asistencia actualizada! ✨<br>Ahora confirmas tu presencia.' : '🌸 Asistencia actualizada.<br>Lamentamos que no puedas asistir a este evento único.', 'exito');
+                form.reset(); return;
+              }
+            }
+            registrados[nombre] = asistencia.value;
+            localStorage.setItem('registrados', JSON.stringify(registrados));
+            mostrarMensajeFlotante(asistencia.value === 'Sí, asistiré' ? '✨ ¡Confirmación recibida! ✨<br>Será un honor contar con su presencia y su gentil detalle en sobre cerrado' : '🌸 ¡Gracias por tu respuesta!<br>Lamentamos que no puedas asistir en este evento único.', 'exito');
+            form.reset();
+          }).catch(() => mostrarMensajeFlotante('Error al enviar. Intenta de nuevo.', 'error'));
+        });
+      }
+    });
+
+    // Animación scroll
+    const elementos = document.querySelectorAll('.fade');
+    function animarScroll() {
+      const trigger = window.innerHeight * 0.85;
+      elementos.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger && rect.bottom > 100) el.classList.add('visible');
+        else el.classList.remove('visible');
+      });
+    }
+    window.addEventListener('scroll', animarScroll);
+    window.addEventListener('load', animarScroll);
+  </script>
+</body>
+
+</html>
