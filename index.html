@@ -1136,6 +1136,27 @@
     </div>
   </div>
 
+  <!-- IMAGEN PERSONALIZADA INVITADO -->
+<section class="pantalla fade">
+  <div class="cuadro-rapunzel">
+    <div class="decoracion-top">
+      <span class="deco-simbolo">✧</span>
+      <span class="deco-simbolo">✦</span>
+      <span class="deco-simbolo">✧</span>
+    </div>
+
+    <h2 class="texto-historia">INVITACIÓN ESPECIAL PARA:</h2>
+
+    <img id="imagenInvitado" src="" alt="Invitado" style="max-width: 100%; border-radius: 20px; margin-top: 15px;">
+
+    <div class="decoracion-bottom">
+      <span class="deco-simbolo">✧</span>
+      <span class="deco-simbolo">✦</span>
+      <span class="deco-simbolo">✧</span>
+    </div>
+  </div>
+</section>
+
   <!-- NOMBRE -->
   <section class="pantalla nombre fade">
     <div class="fondo-castillo">
@@ -1361,6 +1382,25 @@
     }
     window.addEventListener('scroll', animarScroll);
     window.addEventListener('load', animarScroll);
+
+
+
+
+    // Cargar imagen personalizada según URL
+function cargarInvitado() {
+  const params = new URLSearchParams(window.location.search);
+  const invitado = params.get("invitado");
+
+  const img = document.getElementById("imagenInvitado");
+
+  if (invitado) {
+    img.src = "invitados/" + invitado + ".jpg";
+  } else {
+    img.src = "invitados/default.jpg"; // opcional
+  }
+}
+
+cargarInvitado();
   </script>
 </body>
 
